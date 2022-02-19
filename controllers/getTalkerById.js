@@ -1,4 +1,5 @@
 const { readFile } = require('fs/promises');
+
 const PATH = './talker.json';
 
 module.exports = async (req, res, next) => {
@@ -8,10 +9,12 @@ module.exports = async (req, res, next) => {
 
     const filteredTalkers = talkers.find((talker) => talker.id === Number(id));
 
-    if ( !filteredTalkers ) return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+    if (!filteredTalkers) {
+      return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+    }
 
     return res.status(200).json(filteredTalkers);
-  } catch(e) {
+  } catch (e) {
     return next(e);
   }
 };
