@@ -33,6 +33,8 @@ app.get('/', (_request, response) => {
 app.get('/talker', controllers.getTalkers);
 app.get('/talker/:id', controllers.getTalkerById);
 
+app.put('/talker/:id', validationTalker, controllers.editTalker);
+
 app.use(middlewares.errorHandler);
 app.listen(PORT, () => {
   console.log('Online');
