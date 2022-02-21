@@ -1,5 +1,5 @@
 // I didn't use try/catch and arrow function because of lint :/
-function validateTalk(req, res, next) {
+module.exports = (req, res, next) => {
   const { talk } = req.body;
   if (!talk) {
     return res.status(400).json({
@@ -16,7 +16,3 @@ function validateTalk(req, res, next) {
   }
   return next();
 }
-
-module.exports = {
-  validateTalk,
-};
