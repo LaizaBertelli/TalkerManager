@@ -31,6 +31,7 @@ app.get('/', (_request, response) => {
 });
 
 app.get('/talker', controllers.getTalkers);
+app.get('/talker/search', [middlewares.validateToken], controllers.searchTalker);
 app.get('/talker/:id', controllers.getTalkerById);
 
 app.put('/talker/:id', validationTalker, controllers.editTalker);
