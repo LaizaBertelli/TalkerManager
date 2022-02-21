@@ -18,4 +18,4 @@ module.exports = async (req, res, next) => {
   } catch (e) {
     return next(e);
   }
-}
+};
