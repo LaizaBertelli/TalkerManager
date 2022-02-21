@@ -35,6 +35,8 @@ app.get('/talker/:id', controllers.getTalkerById);
 
 app.put('/talker/:id', validationTalker, controllers.editTalker);
 
+app.delete('/talker/:id', [middlewares.validateToken], controllers.deleteTalker);
+
 app.use(middlewares.errorHandler);
 app.listen(PORT, () => {
   console.log('Online');
