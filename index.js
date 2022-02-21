@@ -15,8 +15,15 @@ const validationsLogin = [
   middlewares.validateEmail,
 ];
 
+const validationTalker = [
+  middlewares.validateToken,
+  middlewares.validateAge,
+  middlewares.validateName,
+  middlewares.validateTalk,
+];
+
 app.post('/login', validationsLogin, controllers.newlogin);
-app.post('/talker', controllers.createTalker);
+app.post('/talker', validationTalker, controllers.createTalker);
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
