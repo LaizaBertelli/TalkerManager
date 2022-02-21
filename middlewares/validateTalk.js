@@ -1,7 +1,7 @@
 // I didn't use try/catch and arrow function because of lint :/
 module.exports = (req, res, next) => {
   const { talk } = req.body;
-  if (!talk) {
+  if (!talk || !talk.rate || !talk.watchedAt) {
     return res.status(400).json({
         message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
     });
